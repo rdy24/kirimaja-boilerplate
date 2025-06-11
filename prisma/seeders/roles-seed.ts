@@ -22,15 +22,27 @@ export async function rolesSeed() {
         (role) => !existingRoleKeys.includes(role.key),
     );
     if (newRoles.length === 0) {
-        console.log('⚠️  Semua role sudah ada. Lewat.');
+        console.log('⚠️  All roles already exist. Skipping.');
         return;
     }
     // create new roles
 
     await prisma.role.createMany({
-        data: roles,
+        data: newRoles,
         skipDuplicates: true,
     });
 
-    console.log('✅ Roles seeded');
+    console.log(`✅ ${newRoles.length} new roles seeded`);
+}
+
+// For running directly
+if (require.main === module) {
+    rolesSeed()
+        .catch((e) => {
+            console.error(e);
+            process.exit(1);
+        })
+        .finally(async () => {
+            await prisma.$disconnect();
+        });
 }

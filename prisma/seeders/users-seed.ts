@@ -17,7 +17,7 @@ export async function usersSeed() {
 
         if (!role) {
             console.warn(
-                `⚠️  Role dengan key "${user.roleKey}" tidak ditemukan. Lewat.`,
+                `⚠️  Role with key "${user.roleKey}" not found. Skipping user "${user.name}" (${user.email}).`,
             );
             continue;
         }
@@ -37,6 +37,18 @@ export async function usersSeed() {
             },
         });
 
-        console.log(`✅ User untuk role "${user.roleKey}" ditambahkan`);
+        console.log(`✅ User for role "${user.roleKey}" seeded`);
     }
+}
+
+// For running directly
+if (require.main === module) {
+    usersSeed()
+        .catch((e) => {
+            console.error(e);
+            process.exit(1);
+        })
+        .finally(async () => {
+            await prisma.$disconnect();
+        });
 }

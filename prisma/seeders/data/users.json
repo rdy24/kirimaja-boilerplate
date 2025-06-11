@@ -4,7 +4,6 @@
             "name": "Super Admin",
             "email": "superadmin@mail.com",
             "password": "password123",
-            "avatar": "https://avatar.iran.liara.run/public",
             "phoneNumber": "0811111111",
             "roleKey": "super-admin"
         },
@@ -12,25 +11,8 @@
             "name": "Customer",
             "email": "customer@mail.com",
             "password": "password123",
-            "avatar": "https://avatar.iran.liara.run/public",
             "phoneNumber": "0822222222",
             "roleKey": "customer"
-        },
-        {
-            "name": "Courier",
-            "email": "courier@mail.com",
-            "password": "password123",
-            "avatar": "https://avatar.iran.liara.run/public",
-            "phoneNumber": "0833333333",
-            "roleKey": "courier"
-        },
-        {
-            "name": "Admin Branch",
-            "email": "adminbranch@mail.com",
-            "password": "password123",
-            "avatar": "https://avatar.iran.liara.run/public",
-            "phoneNumber": "0844444444",
-            "roleKey": "admin-branch"
         }
     ]
 }
