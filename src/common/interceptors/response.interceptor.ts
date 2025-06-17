@@ -19,7 +19,9 @@ export class ResponseTransformInterceptor implements NestInterceptor {
     private transformKeysToSnakeCase(data: any): any {
         if (Array.isArray(data)) {
             return data.map((item) => this.transformKeysToSnakeCase(item));
-        } else if (isObject(data)) {
+        } else if (data instanceof Date) {
+            return data;
+        } else if (isObject(data) && data !== null) {
             const snakeCased = mapKeys(data, (_, key) => snakeCase(key));
             for (const key in snakeCased) {
                 snakeCased[key] = this.transformKeysToSnakeCase(
